@@ -4,6 +4,7 @@ import ccxt.async_support as ccxt
 import numpy as np
 import asyncio
 import pandas as pd
+import time
 import matplotlib.pyplot as plt
 import nest_asyncio
 
@@ -13,7 +14,7 @@ class BtcGraphData():
     def __init__ (self):
         
         self.symbol = 'BTC/USDT'
-        self.timeframe = '5m'  # 1 saatlik zaman dilimi
+        self.timeframe = '1h'  # 1 saatlik zaman dilimi
         self.exchange = ccxt.binance()
         
     async def get_closing_prices(self):
