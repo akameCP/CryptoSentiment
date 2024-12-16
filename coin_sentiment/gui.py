@@ -197,7 +197,7 @@ class PieChartBitcoin(QMainWindow):
         #self.setCentralWidget(page_chart)
         
     def pie_chart(self,pos,neg,neu,comp):
-        self.label_chartsdata.setText('pos = '+str(pos)+' neg = '+str(neg))
+        self.label_chartsdata.setText('pos='+str(pos)+' neg='+str(neg))
         y=np.array([pos,neg,neu])
         self.pie_chart_load.pie_chart_loader(y)
         print(pos,neg)
