@@ -18,10 +18,10 @@ class LoginApp(QMainWindow):
         self.setWindowTitle('Kullanici Girisi')
         self.setGeometry(200, 200, 300, 150)
         
-        self.label_username = QLabel('Kullanici Adi:', self)
+        self.label_username = QLabel('Username:', self)
         self.label_username.move(20,20)
         
-        self.label_password = QLabel('Şifre:', self)
+        self.label_password = QLabel('Password:', self)
         self.label_password.move(20,60)
         
         self.input_username = QLineEdit(self)
@@ -31,7 +31,7 @@ class LoginApp(QMainWindow):
         self.input_password.setEchoMode(QLineEdit().Password)
         self.input_password.move(120,60)
         
-        self.label_pushbutton = QPushButton('Giriş Yapin', self)
+        self.label_pushbutton = QPushButton('Login', self)
         self.label_pushbutton.move(20,100)
         self.label_pushbutton.clicked.connect(self.check_login)
         
@@ -46,8 +46,8 @@ class LoginApp(QMainWindow):
             self.close()
         else:
             label_messagebox = QMessageBox()
-            label_messagebox.setWindowTitle('Hatali Giris')
-            label_messagebox.setText('Hatali giris bilgileri !')
+            label_messagebox.setWindowTitle('Error')
+            label_messagebox.setText('Incorrect username or password !     ')
             label_messagebox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             label_messagebox.exec_()
             
