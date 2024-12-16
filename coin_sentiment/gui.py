@@ -90,8 +90,8 @@ class HomePage(QMainWindow):
 
         
         setDockWidgetbottom = QWidget()
-        dock_widgetleft = QDockWidget('Sabit Pencere', self)
-        dock_widgetbottom = QDockWidget('Sabit Pencere', self)
+        dock_widgetleft = QDockWidget('', self)
+        dock_widgetbottom = QDockWidget('', self)
         
         dock_widgetleft.setWidget(setDockWidgetleft)
         dock_widgetbottom.setWidget(setDockWidgetbottom)
