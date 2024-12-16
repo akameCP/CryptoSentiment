@@ -17,8 +17,6 @@ retrieves real-time Bitcoin price data, and displays the results through a user 
 ## Libraries Used
 
 The project uses the following Python libraries:
-username = root
-password = kali
 - `NumPy`
 - `asyncio`
 - `pandas`
@@ -31,3 +29,5 @@ password = kali
 
 1. **Clone the Project**:
    Clone the repository to your local machine:
+   username = root
+   password = kali
