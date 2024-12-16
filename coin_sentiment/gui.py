@@ -1,5 +1,5 @@
 
-from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QApplication, QLabel, QLineEdit, QPushButton, QMessageBox, QMdiArea, QDockWidget
+from PyQt5.QtWidgets import QTextEdit, QMainWindow, QVBoxLayout, QWidget, QApplication, QLabel, QLineEdit, QPushButton, QMessageBox, QMdiArea, QDockWidget
 from PyQt5.QtGui import QPainter ,QColor
 from PyQt5.QtCore import Qt, QTimer, QThread, pyqtSignal
 from rscarp import NewsData
@@ -121,24 +121,20 @@ class HomePage(QMainWindow):
     def start_data_loader(self):
         
             self.data_loader = DataLoader() 
-            self.data_loader.signal.connect(self.show_chart)
+            
             self.data_loader.pie_signal.connect(self.show_pie_chart)
             self.data_loader.news_signal.connect(self.show_news_text)
             self.data_loader.btc_data_signal.connect(self.show_btc_chart)
             self.data_loader.start()
         
             
-    def show_chart(self,data):
-        print(data)
-        self.chart_bitcoin.show_chart(data)
+
         
     def show_pie_chart(self,pos,neg,neu,comp):
         self.chart_bitcoin.pie_chart(pos,neg,neu,comp)
-        print(pos,neg,neu,comp)
     
     def show_news_text(self,text):
         self.news_text.news_text(text)
-        print(text)
         
     def show_btc_chart(self,data):
         self.btc_chart.btc_chart(data)
@@ -160,13 +156,15 @@ class NewsText(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setGeometry(200, 200, 600, 400)
-        self.label = QLabel('loading...',self)
-        self.label.setFixedSize(1000,50)
+        self.label = QTextEdit('loading...',self)
+        self.label.setReadOnly(True)
+        self.label.setFixedSize(1000,800)
         self.label.move(20,20)
         
     def news_text(self,text):
-        self.label.setText(str(text))
-        
+        self.label.setReadOnly(False)
+        self.label.setPlainText(str(text))
+        self.label.setReadOnly(True)
         
 class PieChartBitcoin(QMainWindow):
     def __init__(self):
@@ -194,17 +192,15 @@ class PieChartBitcoin(QMainWindow):
         #########if page_chart.isVisible():
         #self.update_data_chart()
         
-    def show_chart(self,data):
-        print(data)
-        print('updated')    
+
             
         #self.setCentralWidget(page_chart)
         
     def pie_chart(self,pos,neg,neu,comp):
-        self.label_chartsdata.setText(str(comp))
+        self.label_chartsdata.setText('pos = '+str(pos)+' neg = '+str(neg))
         y=np.array([pos,neg,neu])
-        print('yazıyazcak')
         self.pie_chart_load.pie_chart_loader(y)
+        print(pos,neg)
         #self.pie_chart_load.setVisible(True)
         
 class BtcChart(QMainWindow):
@@ -229,6 +225,7 @@ class DataLoader(QThread):
     pie_signal = pyqtSignal(int, int, int, int)
     news_signal = pyqtSignal(str)
     btc_data_signal = pyqtSignal(np.ndarray)
+    #kalman_data_signal = pyqtSignal(np.ndarray)
     
     def run(self):
         asyncio.run(self.data_loading())
@@ -246,6 +243,7 @@ class DataLoader(QThread):
         self.pie_signal.emit(int(pos*100), int(neg*100), int(neu*100), int(data*100))
         self.news_signal.emit(str(news))
         self.btc_data_signal.emit(set_btc_graph_data)
+        #self.kalman_data_signal.emit(np.array(kalman_data)[-1])
         
 class PieChartLoad(FigureCanvas):
     def __init__(self):
@@ -288,13 +286,6 @@ class BtcChartLoad(FigureCanvas):
     
   
         
-
-
-
-
-
-
-
 
 
 
