@@ -12,11 +12,9 @@ retrieves real-time Bitcoin price data, and displays the results through a user 
 - **Future Plans**:
   - Integration of AI-based decision-making mechanisms.
   - Refinement of the user interface.
-  - Sending buy/sell signals via messages.
   - Enhanced News Aggregation: Implementing additional APIs and utilizing Selenium to gather a broader range of news data.
   - Trendline Feature: A new section will be added that shows the trendlines on the charts.
   - Indicator Options: There will be a section where users can view and adjust different indicators optionally.
-  - Historical Signal Analysis: A feature will be added that shows how much profit or loss previous signals have brought.
 
 ## Libraries Used
 
