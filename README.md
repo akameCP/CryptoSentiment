@@ -12,10 +12,12 @@ retrieves real-time Bitcoin price data, and displays the results through a user 
 - **Future Plans**:
   - Integration of AI-based decision-making mechanisms.
   - Refinement of the user interface.
+  - User Interface Enhancement: The application’s visual design will be improved with a more modern, intuitive, and visually appealing interface, including refined charts, buttons, and layout.
   - Enhanced News Aggregation: Implementing additional APIs and utilizing Selenium to gather a broader range of news data.
   - Trendline Feature: A new section will be added that shows the trendlines on the charts.
   - Indicator Options: There will be a section where users can view and adjust different indicators optionally.
-
+  - Real-Time Notification System: Users will receive instant alerts and analysis results via Telegram or WhatsApp, including buy/sell signals and important news updates.
+    
 ## Libraries Used
 
 The project uses the following Python libraries:
